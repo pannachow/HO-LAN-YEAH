@@ -1,9 +1,10 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -14,14 +15,12 @@ const useStyles = makeStyles((theme) =>
     },
     paper: {
       padding: theme.spacing(3),
-      textAlign: "center",
       color: theme.palette.text.secondary,
       whiteSpace: "nowrap",
       marginBottom: theme.spacing(2),
     },
     media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
+      paddingTop: "100%", 
     },
     divider: {
       margin: theme.spacing(2, 0),
@@ -30,103 +29,52 @@ const useStyles = makeStyles((theme) =>
 );
 
 const activities = [
-  { title: "A", url: "#" },
-  { title: "B", url: "#" },
-  { title: "C", url: "#" },
-  { title: "D", url: "#" },
-  { title: "E", url: "#" },
+  { title: "New Updates", url: "#" },
+  { title: "Fashion", url: "#" },
+  { title: "Food & Snacks", url: "#" },
+  { title: "Skincare", url: "#" },
+  { title: "Cosmetics", url: "#" },
 ];
+
+const contents = [
+  { title: "De Tuinen Aloe Vera Gel", image: "1.jpg" },
+  { title: "ULTRASUN FAMILY SPF 30", image: "2.jpg" },
+  { title: "De Tuinen Snail Cream", image: "3.jpeg" },
+  { title: "dr. Organic Charcoal Face Mask", image: "4.jpg" },
+  { title: "Jacob Hooy Lifting Cure", image: "5.jpg" },
+  {
+    title: "Royal Green Camu Camu + Vitamin C",
+    image: "6.jpg",
+  },
+];
+
 export default function ContentGrid() {
   const classes = useStyles();
 
   return (
     <>
-      <Typography variant="h5" gutterBottom align="center">
-        最新商品
-      </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={4}>
-          <Typography variant="h6" align="center" gutterBottom>
-            優惠活動
-          </Typography>
-
+        <Grid item xs={2}>
           {activities.map((activity) => (
-            <Typography variant="h6" align="center" gutterBottom>
+            <Typography variant="h6" align="left" gutterBottom>
               {activity.title}
             </Typography>
           ))}
         </Grid>
-        <Grid item xs={8}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-              <Paper className={classes.paper}>
-                <CardMedia
-                  className={classes.media}
-                  image="snacks.jpg"
-                  title="Paella dish"
-                />
-              </Paper>
-            </Grid>
+        <Grid item xs={10}>
+          <Grid container spacing={4}>
+            {contents.map((content) => (
+              <Grid item xs={4}>
+                <Card>
+                  <CardMedia className={classes.media} image={content.image} />
+                  <CardContent>
+                    <Typography variant="body2" align="center" gutterBottom>
+                      {content.title}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
