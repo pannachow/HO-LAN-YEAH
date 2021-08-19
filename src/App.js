@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import Header from "./Header";
 import MainFeaturedPost from "./MainFeaturedPost";
 import Footer from "./Footer";
+import ContentGrid from "./ContentGrid";
 
 const theme = createMuiTheme({
   typography: {
@@ -20,6 +21,7 @@ export default function App() {
         <Header />
         <main>
           <MainFeaturedPost />
+          <ContentGrid />
         </main>
       </Container>
       <Footer />
