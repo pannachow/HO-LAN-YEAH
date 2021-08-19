@@ -10,12 +10,13 @@ const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: "relative",
     backgroundColor: theme.palette.grey[800],
+    backgroundImage: "url(banner.jpg)",
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: "url(https://source.unsplash.com/random)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
+    paddingTop: "100px"
   },
   overlay: {
     position: "absolute",
@@ -35,22 +36,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeaturedPost(props) {
+const mainFeatured = {
+  title: "Living like the way in the Netherlands",
+  description: "Whatever happened, always keep smiling.",
+  imgText: "main image description",
+};
+
+export default function MainFeaturedPost() {
   const classes = useStyles();
-  const { post } = props;
 
   return (
-    <Paper
-      className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.image})` }}
-    >
-      {
-        <img
-          style={{ display: "none" }}
-          src={post.image}
-          alt={post.imageText}
-        />
-      }
+    <Paper className={classes.mainFeaturedPost}>
       <div className={classes.overlay} />
       <Grid container>
         <Grid item md={6}>
@@ -61,13 +57,13 @@ export default function MainFeaturedPost(props) {
               color="inherit"
               gutterBottom
             >
-              {post.title}
+              {mainFeatured.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {mainFeatured.description}
             </Typography>
             <Link variant="subtitle1" href="#">
-              {post.linkText}
+              {mainFeatured.linkText}
             </Link>
           </div>
         </Grid>
