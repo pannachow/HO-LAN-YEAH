@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) =>
       marginBottom: theme.spacing(2),
     },
     media: {
-      paddingTop: "100%", 
+      paddingTop: "100%",
     },
     divider: {
       margin: theme.spacing(2, 0),
@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const activities = [
-  { title: "New Updates", url: "#" },
-  { title: "Fashion", url: "#" },
-  { title: "Food & Snacks", url: "#" },
-  { title: "Skincare", url: "#" },
-  { title: "Cosmetics", url: "#" },
-];
+// const activities = [
+//   { title: "New Updates", url: "#" },
+//   { title: "CBD", url: "#" },
+//   { title: "Food & Snacks", url: "#" },
+//   { title: "Skincare", url: "#" },
+//   { title: "Cosmetics", url: "#" },
+// ];
 
 const contents = [
   { title: "De Tuinen Aloe Vera Gel", image: "1.jpg" },
@@ -54,14 +54,14 @@ export default function ContentGrid() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={2}>
+        {/* <Grid item xs={2}>
           {activities.map((activity) => (
             <Typography variant="h6" align="left" gutterBottom>
               {activity.title}
             </Typography>
           ))}
-        </Grid>
-        <Grid item xs={10}>
+        </Grid> */}
+        <Grid item xs={12}>
           <Grid container spacing={4}>
             {contents.map((content) => (
               <Grid item xs={4}>

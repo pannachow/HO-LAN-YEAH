@@ -7,16 +7,12 @@ import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
-import Typography from "@material-ui/core/Typography";
-import StarIcon from "@material-ui/icons/Star";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbarTitle: {
-    flex: 1,
   },
   button: {
     margin: theme.spacing(1),
@@ -68,13 +64,15 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  logo: {
+    width: "400px",
+  },
 }));
 
 const sections = [
-  { title: "Fashion", url: "#" },
-  { title: "Food & Snacks", url: "#" },
-  { title: "Skincare", url: "#" },
-  { title: "Cosmetics", url: "#" },
+  { title: "CBD", url: "#" },
+  { title: "Skincare & Cosmetics", url: "#" },
+  { title: "Accessories", url: "#" },
 ];
 
 export default function Header() {
@@ -83,57 +81,47 @@ export default function Header() {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Link href="#" underline="none" className={classes.toolbarTitle}>
-          <Typography
-            variant="h4"
-            align="left"
-            noWrap
-            color="textPrimary"
+        <Box display="flex" alignItems="center" justifyContent="flex-start">
+          <Link href="#">
+            <img src="logo.png" className={classes.logo}></img>
+          </Link>
+        </Box>
+
+        <Box display="flex" justifyContent="flex-end" flexGrow={1}>
+          <Box className={classes.search} alignItems="center" display="flex">
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Box>
+
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            startIcon={<LocalMallIcon />}
           >
-            HO LAN YEAH
-          </Typography>
-        </Link>
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ "aria-label": "search" }}
-          />
-        </div>
+            Shopping Cart
+          </Button>
 
-        <Button
-          variant="outlined"
-          size="small"
-          className={classes.button}
-          startIcon={<StarIcon />}
-        >
-          Favourite
-        </Button>
-
-        <Button
-          variant="outlined"
-          size="small"
-          className={classes.button}
-          startIcon={<LocalMallIcon />}
-        >
-          Shopping Cart
-        </Button>
-
-        <Button
-          variant="outlined"
-          size="small"
-          className={classes.button}
-          startIcon={<ExitToAppIcon />}
-        >
-          Log In
-        </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            startIcon={<ExitToAppIcon />}
+          >
+            Log In
+          </Button>
+        </Box>
       </Toolbar>
+
       <Toolbar
         component="nav"
         variant="dense"
