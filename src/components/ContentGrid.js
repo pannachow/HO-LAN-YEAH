@@ -28,48 +28,25 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-// const activities = [
-//   { title: "New Updates", url: "#" },
-//   { title: "CBD", url: "#" },
-//   { title: "Food & Snacks", url: "#" },
-//   { title: "Skincare", url: "#" },
-//   { title: "Cosmetics", url: "#" },
-// ];
-
-const contents = [
-  { title: "De Tuinen Aloe Vera Gel", image: "1.jpg" },
-  { title: "ULTRASUN FAMILY SPF 30", image: "2.jpg" },
-  { title: "De Tuinen Snail Cream", image: "3.jpeg" },
-  { title: "dr. Organic Charcoal Face Mask", image: "4.jpg" },
-  { title: "Jacob Hooy Lifting Cure", image: "5.jpg" },
-  {
-    title: "Royal Green Camu Camu + Vitamin C",
-    image: "6.jpg",
-  },
-];
-
-export default function ContentGrid() {
+export default function ContentGrid(props) {
   const classes = useStyles();
+  const category = props.category;
 
   return (
     <>
       <Grid container spacing={3}>
-        {/* <Grid item xs={2}>
-          {activities.map((activity) => (
-            <Typography variant="h6" align="left" gutterBottom>
-              {activity.title}
-            </Typography>
-          ))}
-        </Grid> */}
         <Grid item xs={12}>
           <Grid container spacing={4}>
-            {contents.map((content) => (
+            {category.products.map((product) => (
               <Grid item xs={4}>
                 <Card>
-                  <CardMedia className={classes.media} image={content.image} />
+                  <CardMedia
+                    className={classes.media}
+                    image={category.imagePrefix + product.image}
+                  />
                   <CardContent>
                     <Typography variant="body2" align="center" gutterBottom>
-                      {content.title}
+                      {product.title}
                     </Typography>
                   </CardContent>
                 </Card>

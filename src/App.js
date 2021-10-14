@@ -1,11 +1,7 @@
 import React from "react";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import Header from "./Header";
-import MainFeaturedPost from "./MainFeaturedPost";
-import Footer from "./Footer";
-import ContentGrid from "./ContentGrid";
+import Home from "./pages/Home"
 
 const theme = createMuiTheme({
   typography: {
@@ -17,14 +13,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header />
-        <main>
-          <MainFeaturedPost />
-          <ContentGrid />
-        </main>
-      </Container>
-      <Footer />
+      <Home />
     </ThemeProvider>
   );
 }

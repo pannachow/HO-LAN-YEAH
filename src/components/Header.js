@@ -72,10 +72,10 @@ const useStyles = makeStyles((theme) => ({
 const sections = [
   { title: "CBD", url: "#" },
   { title: "Skincare & Cosmetics", url: "#" },
-  { title: "Accessories", url: "#" },
+  { title: "Toys & Souvenirs", url: "#" },
 ];
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
 
   return (
@@ -127,7 +127,7 @@ export default function Header() {
         variant="dense"
         className={classes.toolbarSecondary}
       >
-        {sections.map((section) => (
+        {sections.map((section, i) => (
           <Link
             color="inherit"
             noWrap
@@ -135,6 +135,7 @@ export default function Header() {
             variant="body2"
             href={section.url}
             className={classes.toolbarLink}
+            onClick={() => props.setSelectedCategory(i)}
           >
             {section.title}
           </Link>
