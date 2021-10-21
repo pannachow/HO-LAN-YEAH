@@ -83,7 +83,7 @@ export default function Header(props) {
       <Toolbar className={classes.toolbar}>
         <Box display="flex" alignItems="center" justifyContent="flex-start">
           <Link href="#">
-            <img src="logo.png" className={classes.logo}></img>
+            <img src="logo.png" alt="logo" className={classes.logo}></img>
           </Link>
         </Box>
 

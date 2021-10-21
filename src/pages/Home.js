@@ -11,11 +11,11 @@ const categories = [
     imagePrefix: "CBD/",
     products: [
       {
-        title: "Revuele Hemp Me Face Serum With Hemp Seed 30ml",
+        title: "Revuele Face Serum With Hemp Seed 30ml",
         image: "1.jpg",
       },
       {
-        title: "Lovehemp CBD Oil Atomizer Valencia-Orange 2% (30ml)",
+        title: "Lovehemp CBD Oil Atomizer 2% (30ml)",
         image: "2.jpg",
       },
       { title: "Jacob Hooy CBD Oil 5% (30ml)", image: "3.jpg" },
