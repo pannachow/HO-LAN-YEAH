@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Box } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import { alpha } from "@mui/material/styles";
+import Link from "@mui/material/Link";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,10 +66,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  
+}));
+
+const styles = {
   logo: {
     width: "400px",
   },
-}));
+}
 
 const sections = [
   { title: "CBD", url: "#" },
@@ -84,7 +89,7 @@ export default function Header(props) {
       <Toolbar className={classes.toolbar}>
         <Box display="flex" alignItems="center" justifyContent="flex-start">
           <Link href="#">
-            <img src="logo.png" alt="logo" className={classes.logo}></img>
+            <img style={styles.logo} src="logo.png" alt="logo" />
           </Link>
         </Box>
 

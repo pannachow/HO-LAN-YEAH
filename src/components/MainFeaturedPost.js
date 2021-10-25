@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
+import { makeStyles } from "@mui/styles";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -17,14 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     paddingTop: "100px"
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
     position: "relative",
@@ -47,10 +40,10 @@ export default function MainFeaturedPost() {
 
   return (
     <Paper className={classes.mainFeaturedPost}>
-      <div className={classes.overlay} />
+      <Box position="absolute" top={0} bottom={0} right={0} left={0} bgcolor="rgba(0,0,0,.3)" />
       <Grid container>
         <Grid item md={6}>
-          <div className={classes.mainFeaturedPostContent}>
+          <Box className={classes.mainFeaturedPostContent}>
             <Typography
               component="h1"
               variant="h3"
@@ -65,7 +58,7 @@ export default function MainFeaturedPost() {
             <Link variant="subtitle1" href="#">
               {mainFeatured.linkText}
             </Link>
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </Paper>

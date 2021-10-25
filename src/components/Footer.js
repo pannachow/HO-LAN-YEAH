@@ -1,8 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
 
 function Copyright() {
   return (
@@ -17,25 +17,15 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
-  },
-}));
-
 export default function Footer() {
-  const classes = useStyles();
-
   return (
-    <footer className={classes.footer}>
+    <Box component="footer" mt={8} py={6} bgcolor="background.paper">
       <Container maxWidth="lg">
         <Typography variant="h6" align="center" gutterBottom>
           HO LAN YEAH
         </Typography>
         <Copyright />
       </Container>
-    </footer>
+    </Box>
   );
 }
