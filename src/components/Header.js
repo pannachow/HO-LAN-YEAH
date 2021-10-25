@@ -9,6 +9,7 @@ import InputBase from "@material-ui/core/InputBase";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Box } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -112,10 +113,12 @@ export default function Header(props) {
           </Button>
 
           <Button
+            component={RouterLink}
             variant="outlined"
             size="small"
             className={classes.button}
             startIcon={<ExitToAppIcon />}
+            to="/log-in"
           >
             Log In
           </Button>
