@@ -1,62 +1,53 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@mui/styles";
 import { alpha } from "@mui/material/styles";
 import Link from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
+import MuiButton from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+const Button = styled(MuiButton)(({ theme }) => ({
+  margin: theme.spacing(1),
+}));
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  button: {
-    margin: theme.spacing(1),
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
   },
-  toolbarSecondary: {
-    justifyContent: "space-between",
-    overflowX: "auto",
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -66,14 +57,13 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  
 }));
 
 const styles = {
   logo: {
     width: "400px",
   },
-}
+};
 
 const sections = [
   { title: "CBD", url: "#" },
@@ -82,11 +72,15 @@ const sections = [
 ];
 
 export default function Header(props) {
-  const classes = useStyles();
-
   return (
     <React.Fragment>
-      <Toolbar className={classes.toolbar}>
+      <Toolbar
+        sx={{
+          borderBottom: "1px",
+          borderBottomStyle: "solid",
+          borderBottomColor: "divider",
+        }}
+      >
         <Box display="flex" alignItems="center" justifyContent="flex-start">
           <Link href="#">
             <img style={styles.logo} src="logo.png" alt="logo" />
@@ -94,26 +88,17 @@ export default function Header(props) {
         </Box>
 
         <Box display="flex" justifyContent="flex-end" flexGrow={1}>
-          <Box className={classes.search} alignItems="center" display="flex">
-            <div className={classes.searchIcon}>
+          <Search>
+            <SearchIconWrapper>
               <SearchIcon />
-            </div>
-            <InputBase
+            </SearchIconWrapper>
+            <StyledInputBase
               placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
               inputProps={{ "aria-label": "search" }}
             />
-          </Box>
+          </Search>
 
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            startIcon={<LocalMallIcon />}
-          >
+          <Button variant="outlined" size="small" startIcon={<LocalMallIcon />}>
             Shopping Cart
           </Button>
 
@@ -121,7 +106,6 @@ export default function Header(props) {
             component={RouterLink}
             variant="outlined"
             size="small"
-            className={classes.button}
             startIcon={<ExitToAppIcon />}
             to="/log-in"
           >
@@ -133,7 +117,7 @@ export default function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        className={classes.toolbarSecondary}
+        sx={{ justifyContent: "space-between", overflowX: "auto" }}
       >
         {sections.map((section, i) => (
           <Link
@@ -142,7 +126,7 @@ export default function Header(props) {
             key={section.title}
             variant="body2"
             href={section.url}
-            className={classes.toolbarLink}
+            sx={{ padding: 1, flexShrink: 0 }}
             onClick={() => props.setSelectedCategory(i)}
           >
             {section.title}

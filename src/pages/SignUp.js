@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { withRouter } from "react-router";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -11,42 +10,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
 import { Link as RouterLink } from "react-router-dom";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit">HO LAN YEAH</Link> {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+import Copyright from "../components/Copyright";
 
 function SignUp(props) {
-  const classes = useStyles();
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -77,15 +46,14 @@ function SignUp(props) {
     <>
       <br />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <ValidatorForm className={classes.form} onSubmit={handleSubmit2}>
+          <ValidatorForm sx={{ width: "100%", mt: 3 }} onSubmit={handleSubmit2}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -158,7 +126,7 @@ function SignUp(props) {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
+              sx={{ pt: 3, pb: 2 }}
             >
               Sign Up
             </Button>
@@ -176,7 +144,7 @@ function SignUp(props) {
               </Grid>
             </Grid>
           </ValidatorForm>
-        </div>
+        </Box>
         <Box mt={5}>
           <Copyright />
         </Box>

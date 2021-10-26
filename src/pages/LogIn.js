@@ -10,56 +10,23 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import Copyright from "../components/Copyright";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit">HO LAN YEAH</Link> {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "100vh",
-  },
-  image: {
-    backgroundImage: "url(./login.jpeg)",
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+const GridItemImage = styled(Grid)(({ theme }) => ({
+  backgroundImage: "url(./login.jpeg)",
+  backgroundRepeat: "no-repeat",
+  backgroundColor:
+    theme.palette.type === "light"
+      ? theme.palette.grey[50]
+      : theme.palette.grey[900],
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 }));
 
 function Login(props) {
-  const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -74,15 +41,21 @@ function Login(props) {
   }
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+    <Grid container component="main" sx={{ height: "100vh" }}>
+      <GridItemImage item xs={false} sm={4} md={7} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+        <Box
+          my={8}
+          mx={4}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           {props.error && <div>{props.error}</div>}
-          <ValidatorForm className={classes.form} onSubmit={handleSubmit}>
+          <ValidatorForm sx={{ width: "100%", mt: 1 }} onSubmit={handleSubmit}>
             <TextValidator
               variant="outlined"
               margin="normal"
@@ -118,7 +91,7 @@ function Login(props) {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
+              sx={{ pt: 3, pb: 2 }}
             >
               Log In
             </Button>
@@ -138,7 +111,7 @@ function Login(props) {
               <Copyright />
             </Box>
           </ValidatorForm>
-        </div>
+        </Box>
       </Grid>
     </Grid>
   );
